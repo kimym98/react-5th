@@ -22,6 +22,8 @@ function ChatBox({ message, onAddMessage, ref }: Props) {
   const id = useId();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const olRef = useRef<HTMLOListElement | null>(null);
+
+  //IME(Input Method Editor)입력기에서 문자가 조합될 때 발생 현상
   const [isComposing, setIsComposing] = useState(false);
   useImperativeHandle(ref, () => ({
     scrollDownList: () => {
