@@ -1,5 +1,10 @@
-import { Links, Meta, Outlet, Scripts } from "react-router";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import GlobalNav from "./components/GlobalNav";
+
+//framework에선 HydrateFallback을 root에서 한번만 사용가능
+export function HydrateFallback() {
+  return <div style={{ padding: 16 }}>앱 로딩 중...</div>;
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,6 +23,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

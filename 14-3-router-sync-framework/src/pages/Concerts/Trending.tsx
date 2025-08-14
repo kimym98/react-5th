@@ -7,12 +7,21 @@ import {
   type LoaderFunctionArgs,
 } from "react-router";
 
-function Trending() {
-  const users = useLoaderData() as User[];
+// loader SSR 전용
+
+// SPA(CSR) clientLoader
+export async function clientLoader() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  if (!res.ok) throw new Response("유저 데이터 로딩 실패", { status: 500 });
+  return res.json();
+}
+
+function Component({ loaderData }: { loaderData: User[] }) {
+  // const users = useLoaderData() as User[];
+  const users = loaderData;
   const fetcher = useFetcher();
 
   // loader 재사용
-
   const handleClick = (userId: number) => {
     fetcher.load(`/users/${userId}`);
   };
@@ -27,9 +36,7 @@ function Trending() {
           </button>
         </li>
       ))}
-
       <hr />
-
       {fetcher.data?.user && (
         <Suspense fallback={<p>로딩 중...</p>}>
           <Await resolve={fetcher.data.user}>
@@ -46,9 +53,4 @@ function Trending() {
     </div>
   );
 }
-export default Trending;
-
-export async function loader(args: LoaderFunctionArgs) {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  return res.json();
-}
+export default Component;

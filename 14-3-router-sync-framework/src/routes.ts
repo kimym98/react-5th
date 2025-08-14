@@ -26,14 +26,14 @@ export default [
       route("register", "./pages/auth/Register.tsx"),
     ]),
   ]),
-  ...prefix("concerts", [
+  route("concerts", "./pages/Concerts/ConcertsLayout.tsx", [
     index("./pages/Concerts/ConcertsHome.tsx"),
     route(":city", "./pages/Concerts/City.tsx"),
-    // route("trending", "./pages/Concerts/Trending.tsx"),
+    route("trending", "./pages/Concerts/Trending.tsx"),
   ]),
 
   ...prefix("users", [
-    // route(":userId", "./pages/User/UseDetail.tsx"),
+    route(":userId", "./pages/User/UserDetail.tsx"),
     route("new", "./pages/User/NewUser.tsx"),
   ]),
 ] satisfies RouteConfig;
