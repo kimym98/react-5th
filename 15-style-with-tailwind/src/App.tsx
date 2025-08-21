@@ -4,6 +4,7 @@ import Button_cva from "./components/Button_cva";
 import Button_tw from "./components/Button_tw";
 import Button_twMerge from "./components/Button_twMerge";
 import Card from "./components/Card";
+
 import ChatCard from "./components/ChatCard";
 import Profile from "./components/Profile";
 import ProfileCard from "./components/ProfileCard";
@@ -67,7 +68,7 @@ function App() {
       <hr className="my-5" />
       <Card
         type="primary"
-        logoSrc="/facebook.svg"
+        logoSrc="facebook"
         rate="$120/hr"
         title="Senior UI Developer"
         company="facebook"
@@ -75,7 +76,7 @@ function App() {
       <hr className="my-5" />
       <Card
         type="secondary"
-        logoSrc="/google.svg"
+        logoSrc="google"
         rate="$260/hr"
         title="Senior Data Developer"
         company="google"
@@ -83,10 +84,11 @@ function App() {
       <hr className="my-5" />
       <Card
         type="tertiary"
-        logoSrc="/airbnb.svg"
+        logoSrc="airbnb"
         rate="$50/hr"
         title="Senior UX Developer"
         company="airbnb"
+        className="max-w-[400px]"
       />
     </div>
   );
